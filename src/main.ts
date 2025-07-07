@@ -27,6 +27,15 @@ async function bootstrap() {
     .setDescription('CRUD - Desafio técnico NestJs')
     .setVersion('1.0')
     .addTag('users')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        description: 'Insira o token no formato: Bearer <token>',
+      },
+      'access-token',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

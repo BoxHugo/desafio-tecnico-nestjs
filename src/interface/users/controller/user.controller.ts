@@ -17,7 +17,12 @@ import {
   CreateUserInputDto,
   CreateUserOutputDto,
 } from '@application/users/dto/create.user.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { JwtAuthGuard } from '@interface/auth/jwt-auth.guard';
 import {
   PaginationQueryDto,
@@ -64,6 +69,7 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
   @ApiOperation({ summary: 'Busca todos os usuários' })
   @ApiResponse({
     status: 201,
@@ -80,6 +86,7 @@ export class UsersController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth('access-token')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Atualiza usuário por ID' })
   @ApiResponse({
@@ -93,6 +100,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth('access-token')
   @ApiOperation({ summary: 'Deleta usuário por ID' })
   @ApiResponse({
     status: 201,
