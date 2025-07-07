@@ -50,6 +50,12 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Busca usuário por ID' })
+  @ApiResponse({
+    status: 201,
+    description: 'Usuário encontrado',
+    type: CreateUserOutputDto,
+  })
   @Get(':id')
   async findById(@Param('id') id: string): Promise<CreateUserOutputDto> {
     const user = await this.usersService.findByUserId(id);
@@ -58,6 +64,12 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Busca todos os usuários' })
+  @ApiResponse({
+    status: 201,
+    description: 'Usuários encontrados',
+    type: PaginatedUserResponseDto,
+  })
   @Get()
   async findAll(
     @Query() query: PaginationQueryDto,
@@ -69,12 +81,23 @@ export class UsersController {
 
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Atualiza usuário por ID' })
+  @ApiResponse({
+    status: 201,
+    description: 'Usuário atualizado',
+    type: UpdateUserDto,
+  })
   @Roles(UserRole.USER, UserRole.ADMIN)
   update(@Param('id') id: string, @Body() dto: UpdateUserDto, @Req() req: any) {
     return this.usersService.update(id, dto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Deleta usuário por ID' })
+  @ApiResponse({
+    status: 201,
+    description: 'Usuário deletado',
+  })
   @Roles(UserRole.USER, UserRole.ADMIN)
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(
