@@ -5,7 +5,7 @@
 
 # Gerenciador de Usuários (API)
 
-## Description
+## Descrição
 
 Uma API RESTful desenvolvida para o desafio técnico (Teste para Programador Backend Sênior). O objetivo dessa api é o gerenciamento de usuários.
 
@@ -78,9 +78,9 @@ Uma API RESTful desenvolvida para o desafio técnico (Teste para Programador Bac
 
 ```
 
-$ git clone <project>
+$ git clone git@github.com:BoxHugo/desafio-tecnico-nestjs.git
 
-$ cd <project>
+$ cd desafio-tecnico-nestjs
 
 ```
 
