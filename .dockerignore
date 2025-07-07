@@ -1,0 +1,9 @@
+node_modules/
+logs/
+.env
+Dockerfile
+docker-compose.yml
+dist/
+npm-debug.log*
+yarn-error.log*
+test/coverage

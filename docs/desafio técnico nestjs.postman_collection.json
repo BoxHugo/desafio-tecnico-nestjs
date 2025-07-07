@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "69f275fe-14d9-4511-9075-18eb8650ee54",
+		"name": "desafio técnico nestjs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16131993"
+	},
+	"item": [
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"francisco.rosa@claro.com.br\",\r\n    \"password\": \"Claro@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/getById",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZWRmNmRiMS03ZTRhLTQ2YTEtOTY2NC03YmE2MWM4NDNmODYiLCJlbWFpbCI6InRlc3RfdXNlckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTE4MTgyOTIsImV4cCI6MTc1MTgyMTg5Mn0.NZDj0aDoSxiembSyGrUd6cIJKgX1xvHUc9s3gTxY-BY",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/v1/users/bedf6db1-7e4a-46a1-9664-7ba61c843f86",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"bedf6db1-7e4a-46a1-9664-7ba61c843f86"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MWJkNGY5Ny02M2NkLTRjOTEtYWQ4Ni03NjZlOGJkMWRlZTciLCJlbWFpbCI6ImZyYW5jaXNjby5yb3NhQGNsYXJvLmNvbS5iciIsImlhdCI6MTc1MTc0MjYxNywiZXhwIjoxNzUxNzQ2MjE3fQ.fksyCCPe4_qXEtKi6EtB82G_vrvHWH748nJ-oV5wXuo",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"francisco.rosa@claro.com.br\",\r\n    \"password\": \"Claro@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNzFlZTk0Ny1jMGY4LTQ3OTUtYTMzZC1kYjMyMTBlY2UxYWIiLCJlbWFpbCI6ImZyYW5jaXNjby5yb3NhQGNsYXJvLmNvbS5iciIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUxODM3NDk2LCJleHAiOjE3NTE4NDEwOTZ9.3sDYOsRdEsQpEE50zPKXCZsqhv81VT9GlW7R8w_hOOk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/v1/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/getAll",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MWJkNGY5Ny02M2NkLTRjOTEtYWQ4Ni03NjZlOGJkMWRlZTciLCJlbWFpbCI6ImZyYW5jaXNjby5yb3NhQGNsYXJvLmNvbS5iciIsImlhdCI6MTc1MTgwNjcwOCwiZXhwIjoxNzUxODEwMzA4fQ.ULnLaLrlN33bDO4SjoJPPP2Pih6_i6J_-8ebWNPae-U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/getAll?page",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MWJkNGY5Ny02M2NkLTRjOTEtYWQ4Ni03NjZlOGJkMWRlZTciLCJlbWFpbCI6ImZyYW5jaXNjby5yb3NhQGNsYXJvLmNvbS5iciIsImlhdCI6MTc1MTc1ODkxMCwiZXhwIjoxNzUxNzYyNTEwfQ.4THKIl0qy01wXXU5mtDZH6o3MSgqVJZJwYpsAm-a3zE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/v1/users?page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC1hYmNkLXo5eDgtOTk5OS1hMWIyYzNkNGU1ZjYiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxNTcwOCwiZXhwIjoxNzUxODE5MzA4fQ.7fKHgu1rYICD4fAsimU9_5dalNFgHYA0qpzYjWTzWjY"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"targetId\": \"81bd4f97-63cd-4c91-ad86-766e8bd1dee7\",\n    \"password\": \"Claro@1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/users/81bd4f97-63cd-4c91-ad86-766e8bd1dee7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"81bd4f97-63cd-4c91-ad86-766e8bd1dee7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin update other user",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC1hYmNkLXo5eDgtOTk5OS1hMWIyYzNkNGU1ZjYiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxNTcwOCwiZXhwIjoxNzUxODE5MzA4fQ.7fKHgu1rYICD4fAsimU9_5dalNFgHYA0qpzYjWTzWjY"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"targetId\": \"bedf6db1-7e4a-46a1-9664-7ba61c843f86\",\n    \"role\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/users/12345678-abcd-z9x8-9999-a1b2c3d4e5f6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"12345678-abcd-z9x8-9999-a1b2c3d4e5f6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MWJkNGY5Ny02M2NkLTRjOTEtYWQ4Ni03NjZlOGJkMWRlZTciLCJlbWFpbCI6ImZyYW5jaXNjby5yb3NhQGNsYXJvLmNvbS5iciIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUxODE2ODI3LCJleHAiOjE3NTE4MjA0Mjd9.OXs2w6PNTZNMdTWyUdtIwmNfEfhMW6Sm2G9LPXRK8nM"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"targetId\": \"81bd4f97-63cd-4c91-ad86-766e8bd1dee7\",\n    \"password\": \"Claro@1\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/users/81bd4f97-63cd-4c91-ad86-766e8bd1dee7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"81bd4f97-63cd-4c91-ad86-766e8bd1dee7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC1hYmNkLXo5eDgtOTk5OS1hMWIyYzNkNGU1ZjYiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTgxODE5NCwiZXhwIjoxNzUxODIxNzk0fQ.brgIqY_jrikDbzYD2NnuWC4MFgzZ6m7zTeXm-m7APP4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"targetId\": \"bedf6db1-7e4a-46a1-9664-7ba61c843f86\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/v1/users/bedf6db1-7e4a-46a1-9664-7ba61c843f86",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"bedf6db1-7e4a-46a1-9664-7ba61c843f86"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
