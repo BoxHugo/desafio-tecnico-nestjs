@@ -109,6 +109,8 @@ $ docker run -d --name mongo-dev -p 27017:27017 -v mongo_data:/data/db mongo:6.0
 
 $ docker-compose up -d mongo
 
+$ npm run seed:admin
+
 $ npm run start
 
 ```
@@ -120,6 +122,8 @@ $ npm run start
 $ docker-compose down
 
 $ docker-compose up -d --build
+
+$ npm run seed:admin
 
 ```
 
