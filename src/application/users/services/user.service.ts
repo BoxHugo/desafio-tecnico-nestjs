@@ -122,35 +122,52 @@ export class UsersService {
     page: number = 1,
     limit: number = 10,
   ): Promise<PaginationResult<User>> {
+    let result;
+    this.logger.log(`Buscando todos usuários`);
     const options: PaginationOptions = { page, limit };
-    return await this.userRepo.findAll(options);
+
+    try {
+      result = await this.userRepo.findAll(options);
+    } catch (err: any) {
+      const messageError = 'Não foi possível recuperar usuarios';
+      this.logger.error(messageError, err.stack, 'UsersService.findAll');
+      throw new InternalServerErrorException(messageError);
+    }
+    return result;
   }
 
   async update(ownerId: string, dto: UpdateUserDto): Promise<UserResponseDto> {
-    this.logger.log('Atualizando usuario');
+    this.logger.log(
+      `Solicitante: ${ownerId} quer atualizar usuario ${dto.targetId}`,
+    );
 
+    this.logger.log('Recupera informações no banco...');
     const resultOwner = await this.userRepo.findByUserId(ownerId);
     const resultTarget = await this.userRepo.findByUserId(dto.targetId);
 
     if (!resultOwner) {
+      this.logger.error('Usuário solicitante não encontrado');
       throw new NotFoundException('Usuário solicitante não encontrado');
     }
 
     if (!resultTarget) {
+      this.logger.error('Usuário alvo não encontrado');
       throw new NotFoundException('Usuário alvo não encontrado');
     }
 
+    this.logger.log('Valida role do usuário solicitante');
     if (resultOwner.role === UserRole.USER) {
+      this.logger.log("Solicitante tem perfil 'user'");
       if (resultOwner.userId !== dto.targetId) {
-        throw new ForbiddenException(
-          'Você só pode atualizar seu próprio perfil',
-        );
+        const msg =
+          'Solicitante com perfil user, só pode atualizar seu próprio perfil';
+        this.logger.error(msg);
+        throw new ForbiddenException(msg);
       }
 
       if (dto.role && dto.role !== resultTarget.role) {
-        throw new ForbiddenException(
-          'Usuário não pode alterar sua própria role',
-        );
+        const msg = 'Usuário não pode alterar sua própria role';
+        throw new ForbiddenException(msg);
       }
     }
 
@@ -158,6 +175,7 @@ export class UsersService {
       const dtoPasswordHash = await argon2.hash(dto.password);
 
       if (dtoPasswordHash !== resultTarget.password) {
+        this.logger.log('Atualizando a senha');
         dto.password = dtoPasswordHash;
       }
     }
@@ -168,13 +186,21 @@ export class UsersService {
         dto.role && { role: dto.role }),
     };
 
-    const updated = await this.userRepo.update(dto.targetId, allowed);
+    this.logger.log('Atualizando o registro na base...');
 
-    return new UserResponseDto(
-      updated.userId,
-      updated.email,
-      updated.role as UserRole,
-    );
+    try {
+      const updated = await this.userRepo.update(dto.targetId, allowed);
+
+      return new UserResponseDto(
+        updated.userId,
+        updated.email,
+        updated.role as UserRole,
+      );
+    } catch (err: any) {
+      const messageError = 'Não foi possível atualizar usuario na base';
+      this.logger.error(messageError, err.stack, 'UsersService.update');
+      throw new InternalServerErrorException(messageError);
+    }
   }
 
   async remove(ownerId: string, dto: UpdateUserDto): Promise<void> {

@@ -5,6 +5,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { HttpExceptionFilter } from '@shared/interceptors/http-exception.filter';
 import { LoggingInterceptor } from '@shared/interceptors/logging.interceptor';
 import { WinstonLogger } from '@infrastructure/logging/winston.logger';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const versionApi = 'v1';
@@ -21,6 +22,7 @@ async function bootstrap() {
       transform: true,
     }),
   );
+  app.use(helmet());
 
   const config = new DocumentBuilder()
     .setTitle('Gerenciador de Usuários')
