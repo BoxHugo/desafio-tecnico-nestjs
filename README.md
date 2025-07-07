@@ -127,7 +127,6 @@ $ npm run seed:admin
 
 ```
 
-
 ## Executa Testes
 
 
@@ -146,6 +145,12 @@ $ npm run test
 $ npm run test:e2e
 
 ```
+
+## Swagger
+
+> http://localhost:3000/v1/doc
+
+
 
 ## Deploy AWS
 
